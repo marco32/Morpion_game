@@ -1,12 +1,61 @@
 $(document).ready(function () {	
-
-	var p1 = $('#Player1').val();
-	var p2 = $('#Player2').val();
+	load();
+	var player1 = $('#Player1').val();
+	var player2 = $('#Player2').val();
 	var player;
 	var coup = 0;
-	var res =[[1,1,1],[1,1,1],[1,1,1]];
+	var res = [[1,1,1],[1,1,1],[1,1,1]];
 	var bool = true;
-	
+	var joueur= [];
+	var win= 0;
+	var win2= 0;
+	function stockage(){
+			$.ajax({ 
+				url:'http://192.168.1.50/json-db', 
+				data: { task: "set",
+						key: "morpionMarco",
+				 		value: JSON.stringify(joueur),
+					} 
+			});
+	}
+	function load(){
+			$.ajax({ 
+				url:'http://192.168.1.50/json-db', 
+				data: { task: 'get',
+						key: 'morpionMarco', 
+					} 
+			})
+			.done(function(data){
+				if(data != null){
+
+					$("#score").append(data);
+				}
+	});
+
+	}
+	function score(){
+		var player1= {
+			"prenom": $('#Player1').val(),
+			"victoire": win
+		}
+		var player2={
+			"prenom": $('#Player2').val(),
+			"victoire": win2
+		}
+		joueur.push(player1,player2)
+		 stockage();
+	}
+
+
+
+	$('#reset').on('click',function(){
+	 	coup = 0;
+	 	res = [ 	[1, 1, 1],
+					[1, 1, 1],
+					[1, 1, 1],	];
+		bool = true;
+	 	$("td").html("");
+	 });
 
 	$('td').click(function(){
 		if(bool){
@@ -42,12 +91,16 @@ $(document).ready(function () {
 					if  (checkWin.includes('XXX'))
 					{
 						bool = false;
-						alert("Victoire de "+$('#Player2').val());
+						$("#winner").append("Victoire de "+$('#Player2').val());
+						win2++;
+						score();
 					}
 					else if  (checkWin.includes('OOO'))
 					{
 						bool = false;
-						alert("Victoire de "+$('#Player1').val());
+						$("#winner").append("Victoire de "+$('#Player1').val());
+						win++;
+						score();
 					}
 				}
 			}
@@ -63,14 +116,18 @@ $(document).ready(function () {
 				{
 					checkWin += res[j][i];
 					if  (checkWin.includes('XXX'))
-					{
+						{
 						bool = false;
-						alert("Victoire de "+$('#Player2').val());
+						$("#winner").append("Victoire de "+$('#Player2').val());
+						win2++;
+						score();
 					}
 					else if  (checkWin.includes('OOO'))
 					{
 						bool = false;
-						alert("Victoire de "+$('#Player1').val());
+						$("#winner").append("Victoire de "+$('#Player1').val());
+						win++;
+						score();
 					}
 				}
 			}
@@ -85,12 +142,16 @@ $(document).ready(function () {
 			if  (x1.includes('XXX') || x2.includes('XXX'))
 			{
 				bool = false;
-				alert("Victoire de "+$('#Player2').val());
+				$("#winner").append("Victoire de "+$('#Player2').val());
+				win2++;
+				score();
 			}
 			else if  (x1.includes('OOO') || x2.includes('OOO'))
 			{
 				bool = false;
-				alert("Victoire de "+$('#Player1').val());
+				$("#winner").append("Victoire de "+$('#Player1').val());
+				win++;
+				score();
 			}
 		}
 	});

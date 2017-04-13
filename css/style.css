@@ -1,0 +1,14 @@
+td {
+	text-align: center;
+	font-size: 140px;
+	width: 200px;
+	height: 200px;
+	border-style: groove;
+	border-color: black;
+}
+input {
+	text-align: center;
+	margin-left: 80px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
