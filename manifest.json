@@ -1,0 +1,8 @@
+{
+	"name": "Morpion",
+	"short_name": "Morpion",
+	"start_url": "index.html",
+	"display": "standalone",
+	"background_color": "grey",
+	"orientation": "landscape"
+}
