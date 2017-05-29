@@ -11,8 +11,8 @@ var filesToCache=[
 'index.html',
 'js/app.js',
 'css/style.css',
-'node_modules/bootstrap/dist/css/bootstrap.min.css',
-'node_modules/jquery/dist/jquery.min.js'
+'css/bootstrap.min.css',
+'js/jquery.min.js'
 ]
 self.addEventListener('fetch', function(e) {
 	e.respondWith(
