@@ -1,6 +1,6 @@
 $(document).ready(function () {	
 	if ('serviceWorker' in navigator){
-			navigator.serviceWorker.register('sw.js')
+			navigator.serviceWorker.register('sw.js',{scope: '/Morpion_game/'})
 			.then(function(reg){
 			})
 			.catch(function(error){
