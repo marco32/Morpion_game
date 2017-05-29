@@ -1,12 +1,9 @@
 $(document).ready(function () {	
 	if ('serviceWorker' in navigator){
-		console.log('??')
-			navigator.serviceWorker.register('/sw.js')
+			navigator.serviceWorker.register('sw.js')
 			.then(function(reg){
-			console.log('ok');
 			})
 			.catch(function(error){
-			console.log(error);
 			});
 		}
 
@@ -114,10 +111,8 @@ $(document).ready(function () {
 			}
 		}
 	});
-	console.log($('#winner').html())
 	function egalité(){
-			console.log(coup)
-		if (coup === 8){
+				if (coup === 8){
 			if( $('#winner').html()=== ""){
 
 			$('#winner').append("Egalité")
