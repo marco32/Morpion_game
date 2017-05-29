@@ -7,12 +7,12 @@ self.addEventListener('install', function(e) {
 });
 var cacheName="pwa";
 var filesToCache=[
-'/',
-'index.html',
-'js/app.js',
-'css/style.css',
-'css/bootstrap.min.css',
-'js/jquery.min.js'
+'/Morpion_game/',
+'/Morpion_game/index.html',
+'/Morpion_game/js/app.js',
+'/Morpion_game/css/style.css',
+'/Morpion_game/css/bootstrap.min.css',
+'/Morpion_game/js/jquery.min.js'
 ]
 self.addEventListener('fetch', function(e) {
 	e.respondWith(
